@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tomato Leaf Disease Detection</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="icon"
+          type="image/png"
+          href="{{ url_for('static', filename='OMA.png') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Tomato Leaf Disease Detection</h1>
+
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+
+        <input type="file" name="file" required>
+
+        <br><br>
+
+        <button type="submit">Detect Disease</button>
+
+    </form>
+
+    {% if prediction %}
+
+    <div class="result">
+
+        <h2>Disease: {{ prediction }}</h2>
+
+        <h3>Confidence: {{ confidence }}%</h3>
+
+        <p>{{ description }}</p>
+
+        <h3>Recommendation</h3>
+
+        <p>{{ treatment }}</p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
